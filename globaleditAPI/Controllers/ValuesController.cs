@@ -19,10 +19,19 @@ namespace CorcoranAPI.Controllers
             _repository = repository;
         }
 
-    
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(string id)
+       
+        //Default sort order
+
+        [HttpGet()]
+        public async Task<IActionResult> Get()
+        {
+            return Ok(await _repository.getPresidentList("asc"));
+        }
+
+
+
+        [HttpGet("{sortorder}")]
+        public async Task<IActionResult> Get(string sortorder)
         {
             return Ok(await _repository.getPresidentList("asc"));
         }

@@ -7,17 +7,17 @@ namespace CorcoranAPI.Models
 {
     public class PresidentModel
     {
-        public class PresidentList
+        public class President
         {
            
             [Key]
             public Guid Id { get; set; }
-            public string president { get; internal set; } 
-            public string birthday { get; internal set; }
-            public string birthplace { get; internal set; }
+            public string president { get; set; } 
+            public string birthday { get;  set; }
+            public string birthplace { get; set; }
             // Intentionally declared as string instead datetime 
-            public string deathday { get; internal set; } 
-            public string Deathplace { get; internal set; }
+            public string deathday { get;  set; } 
+            public string Deathplace { get;  set; }
 
         }
 
@@ -28,7 +28,7 @@ namespace CorcoranAPI.Models
 
             }
 
-            public DbSet<PresidentList> Presidents { get; set; }
+            public DbSet<President> Presidents { get; internal set; }
 
 
         }
