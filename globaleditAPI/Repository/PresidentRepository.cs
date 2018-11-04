@@ -24,7 +24,7 @@ namespace CorcoranAPI.Repository
         {
 
             var result = await _presidentContext.Presidents.Select(a => new {a.president, a.birthday, a.birthplace, a.deathday, a.Deathplace})
-                                                .OrderByDescending(a=>a.president).ToListAsync();
+                                                .OrderBy(a=>a.president).ToListAsync();
 
             return result;
         }
