@@ -20,12 +20,12 @@ namespace CorcoranAPI.Repository
         }
 
 
-        public async Task <IEnumerable> getPresidentList(string sortorder)
+        public async Task <IEnumerable> getPresidentList(bool? sortorder)
         {
 
-            var result = await _presidentContext.Presidents.Select(a => new {a.president, a.birthday, a.birthplace, a.deathday, a.Deathplace})
-                                                .OrderBy(a=>a.president).ToListAsync();
-
+            var result = await _presidentContext.Presidents.Select (a => new {a.president, a.birthday, a.birthplace, a.deathday, a.Deathplace})
+                                                .OrderBy(b=>b.president).ToListAsync();
+         
             return result;
         }
     }

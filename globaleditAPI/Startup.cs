@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using CorcoranAPI.Models;
 using CorcoranAPI.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -12,8 +8,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using static CorcoranAPI.Models.PresidentModel;
-
-//using static CorcoranAPI.Models.PresidentModel;
 
 namespace CorcoranAPI
 {
@@ -111,8 +105,7 @@ namespace CorcoranAPI
                    );
                    
                 context.SaveChangesAsync();             
-
-            
+                 
             }
         }
 

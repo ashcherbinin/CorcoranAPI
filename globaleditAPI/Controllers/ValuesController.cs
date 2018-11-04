@@ -25,15 +25,15 @@ namespace CorcoranAPI.Controllers
         [HttpGet()]
         public async Task<IActionResult> Get()
         {
-            return Ok(await _repository.getPresidentList("asc"));
+            return Ok(await _repository.getPresidentList(false));
         }
 
 
 
         [HttpGet("{sortorder}")]
-        public async Task<IActionResult> Get(string sortorder)
+        public async Task<IActionResult> Get(bool sortorder)
         {
-            return Ok(await _repository.getPresidentList("asc"));
+            return Ok(await _repository.getPresidentList(sortorder));
         }
 
 
