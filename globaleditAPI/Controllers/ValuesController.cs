@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Collections;
 using System.Threading.Tasks;
 using CorcoranAPI.Repository;
 using Microsoft.AspNetCore.Mvc;
@@ -19,23 +18,21 @@ namespace CorcoranAPI.Controllers
             _repository = repository;
         }
 
-       
-        //Default sort order
-
         [HttpGet()]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get([FromQuery] bool descending = false)
         {
-            return Ok(await _repository.getPresidentList(false));
-        }
+            IEnumerable response = null; 
 
+            try{
 
+                response = await _repository.getPresidentList(descending);
+                return Ok(response);
+            }
+            catch(Exception e){
 
-        [HttpGet("{sortorder}")]
-        public async Task<IActionResult> Get(bool sortorder)
-        {
-            return Ok(await _repository.getPresidentList(sortorder));
-        }
+                return BadRequest(e.Message);
 
-
-    }
+            }
+        } 
+     }
 }

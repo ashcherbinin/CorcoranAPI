@@ -6,7 +6,6 @@ namespace CorcoranAPI.Repository
 {
     public interface IPresidentRepository
     {
-
-        Task <IEnumerable> getPresidentList(bool? sortorder );  
+        Task <IEnumerable> getPresidentList(bool descending );  
     }
 }

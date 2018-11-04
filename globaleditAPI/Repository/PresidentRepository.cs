@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using System.Linq;
 using System.Threading.Tasks;
-using CorcoranAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using static CorcoranAPI.Models.PresidentModel;
 
@@ -11,6 +8,7 @@ namespace CorcoranAPI.Repository
 {
     public class PresidentRepository:IPresidentRepository
     {
+       
 
         private readonly PresidentContext _presidentContext;
 
@@ -20,12 +18,14 @@ namespace CorcoranAPI.Repository
         }
 
 
-        public async Task <IEnumerable> getPresidentList(bool? sortorder)
+        public async Task <IEnumerable> getPresidentList(bool descending)
         {
-
-            var result = await _presidentContext.Presidents.Select (a => new {a.president, a.birthday, a.birthplace, a.deathday, a.Deathplace})
-                                                .OrderBy(b=>b.president).ToListAsync();
-         
+            
+            IEnumerable result = !descending
+                ? await _presidentContext.Presidents.Select(a => new { a.president, a.birthday, a.birthplace, a.deathday, a.Deathplace })
+                                                 .OrderBy(b => b.president).ToListAsync()
+                : await _presidentContext.Presidents.Select(a => new { a.president, a.birthday, a.birthplace, a.deathday, a.Deathplace })
+                                                 .OrderByDescending(b => b.president).ToListAsync();
             return result;
         }
     }
